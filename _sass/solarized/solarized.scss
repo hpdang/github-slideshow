@@ -1,0 +1,365 @@
+/**
+ * based on Solarized Dark theme for reveal.js by Achim Staebler
+ * and Solarized colors by Ethan Schoonover
+ * http://ethanschoonover.com/solarized
+ * remixed by: Thomas Friese
+ * http://tasmo.rocks/
+**/
+
+// ---------------------------------------------
+// Main Variables
+// Solarized base colors
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+
+// Background of the presentation
+$backgroundColor: $base03;
+
+// Primary/body text
+$mainFont: 'Open Sans', Arial, sans-serif;
+$mainFontWeight: 400;
+$mainFontSize: 2rem;
+$mainColor: $base1;
+
+// Vertical spacing between blocks of text
+$blockMargin: 20px;
+
+// Headings
+$headingMargin: .5em 0;
+$headingFont: 'open_sanslight' ,'Open Sans', Arial, sans-serif;
+$headingColor: $base2;
+$headingLineHeight: 1em;
+$headingLetterSpacing: 0.02rem;
+$headingTextTransform: none;
+$headingTextShadow: 0px 0px 2px rgba( $headingColor, .5 );
+$headingFontWeight: $mainFontWeight + 400;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 5rem;
+$heading2Size: 4rem;
+$heading3Size: 3rem;
+$heading4Size: 2.00rem;
+
+// Links and actions
+$linkColor: $blue;
+$linkColorHover: lighten( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: $magenta;
+$selectionColor: $base3;
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+	background: $backgroundColor;
+}
+
+$headerFont: $headingFont;
+$captionFont: $mainFont;
+$codeFont: 'Source Code Pro', 'Inconsolata', monospace;
+$codeFontSize: $mainFontSize - .5rem;
+$altFont: serif;
+$italicFont: 'open_sanslight_italic', 'Open Sans', Arial, sans-serif;
+$quoteFont: 'droid_serifitalic', cursive;
+
+// reveal.js theme
+@import "../../reveal.js/css/reveal";
+// Theme template ------------------------------
+@import "../../reveal.js/css/theme/template/theme";
+// ---------------------------------------------
+@import "../mixin";
+@import "../fonts";
+@import "syntax/syntax_solarized";
+// ---------------------------------------------
+@mixin rebase( $rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3 )
+{
+  background-color: $rebase03;
+  color: $rebase1;
+  //* { color: $rebase1; }
+  body {
+    background-color: $rebase03;
+  }
+  .reveal {
+    background-color: $rebase03;
+    color: $rebase1;
+    text-shadow: 0 0 1px rgba( $rebase1, .2 );
+    -webkit-text-stroke: 1px rgba( $rebase1, .2 );
+    h1,h2,h3,h4,h5,h6 {
+      color: $rebase2;
+      border-color: $rebase0;
+      text-shadow: $headingTextShadow;
+      a {
+        &:not( .image ), &:active, &:visited {
+          color: $rebase2;
+        }
+        &:hover {
+          color: $linkColorHover;
+        }
+      }
+    }
+    a {
+      &:not( .image ), &:active, &:visited {
+        color: $linkColor;
+      }
+      &:hover {
+        color: $linkColorHover;
+      }
+    }
+    h1,h2,h3,h4,h5,h6,p,li {
+      >code, >a>code {
+        background: $rebase1;
+        color: $rebase03;
+        border: 1px solid $rebase1;
+      }
+    }
+    section img {
+      border: 4px solid $rebase1;
+    }
+    figure.highlight {
+      background: $rebase3;
+    }
+  }
+}
+@mixin accentize( $accent ) {
+  a#sitelink{ background-color: $accent; }
+  a, a:active, a:visited, code.url { color: $accent; }
+  h1 { color: $accent }
+  h2,h3,h4,h5,h6 { color: $accent }
+  h1#pagetitle, h1:first-of-type { color: $accent; }
+}
+
+/* dark is default mode, so pair with general html definition */
+.light { @include rebase( $base3,$base2,$base1,$base0,$base00,$base01,$base02,$base03 ) }
+.dark { @include rebase( $base03,$base02,$base01,$base00,$base0,$base1,$base2,$base3 ) }
+html * {
+  color-profile: sRGB;
+  -webkit-font-smoothing: antialiased;
+  font-smooth: always;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.reveal {
+  font-weight: $mainFontWeight;
+  font-kerning: normal;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  p,
+  ul {
+    text-align: left;
+    font-weight: $mainFontWeight;
+  }
+  h1,h2,h3,h4,h5,h6,p,li {
+    >code, >a>code {
+      font-size: $mainFontSize;
+      @include border-radius( 0.15em );
+      padding: 0 0.3em;
+    }
+  }
+  pre {
+    box-shadow: none;
+    margin: 0;
+    width: unset;
+  }
+  pre,code {
+    font-family: $codeFont;
+    font-size: $codeFontSize;
+    font-weight: normal;
+  }
+  pre code {
+    padding: 0;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  figure.highlight {
+    width: 90%;
+    margin: .5em auto;
+    padding: .7em 1em .8em;
+    text-shadow: none;
+    box-shadow: 0px 0px 6px rgba( 0,0,0,0.3 );
+    @include border-radius( 0.4em );
+  }
+  blockquote {
+    background: inherit;
+    box-shadow: none;
+    font-family: $quoteFont;
+    font-size: 2.8rem;
+    font-style: normal;
+    font-weight: 100;
+    padding-left: 3em;
+    i.fa {
+      position:absolute;
+      font-size:2em;
+      font-style: italic;
+      line-height:1;
+      left:-.1em;
+      top:-.1em;
+    }
+    code {
+      font-size: 1.1em;
+    }
+  }
+  p > img,
+  .image {
+    display: block;
+    text-align: center;
+  }
+  iframe,
+  img {
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  }
+  .slides>section,
+  .slides>section>section {
+    padding: 0;
+  }
+  .slides>section {
+    >h1:first-child {
+      margin-top: 0;
+    }
+    &[data-background="black"] {
+      h1,h2,h3,h4,h5,h6 {
+        color: $base2;
+      }
+    }
+    .fragment.highlight-red,
+    .fragment.highlight-current-red,
+    .fragment.highlight-green,
+    .fragment.highlight-current-green,
+    .fragment.highlight-blue,
+    .fragment.highlight-current-blue {
+      opacity: 1;
+    }
+    .fragment.highlight-red.visible,
+    .fragment.highlight-current-red.current-fragment {
+      * {
+        color: $red;
+        text-shadow: 0 0 1px rgba( $red, .2 );
+        -webkit-text-stroke: 1px rgba( $red, .2 );
+      }
+      color: $red;
+      text-shadow: 0 0 1px rgba( $red, .2 );
+      -webkit-text-stroke: 1px rgba( $red, .2 );
+    }
+    .fragment.highlight-green.visible,
+    .fragment.highlight-current-green.current-fragment {
+      * {
+        color: $green;
+        text-shadow: 0 0 1px rgba( $green, .2 );
+        -webkit-text-stroke: 1px rgba( $green, .2 );
+      }
+      color: $green;
+      text-shadow: 0 0 1px rgba( $green, .2 );
+      -webkit-text-stroke: 1px rgba( $green, .2 );
+    }
+    .fragment.highlight-blue.visible,
+    .fragment.highlight-current-blue.current-fragment {
+      * {
+        color: $blue;
+        text-shadow: 0 0 1px rgba( $blue, .2 );
+        -webkit-text-stroke: 1px rgba( $blue, .2 );
+      }
+      color: $blue;
+      text-shadow: 0 0 1px rgba( $blue, .2 );
+      -webkit-text-stroke: 1px rgba( $blue, .2 );
+    }
+  }
+  // Fontawesome
+  .fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 35%;
+    font-style: normal;
+    font-weight: 200;
+    vertical-align: super;
+    line-height: 1;
+    padding-left: 0.2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .fa-twitter, .fa-github {
+    font-size: 100%;
+  }
+  // accentize
+  .slides>section.yellow, .yellow{
+    @include accentize( $yellow );
+    h1,h2,h3,h4,h5,h6,a,a:active,a:visited,code.url {
+      color:$yellow;
+      text-shadow: 0 0 1px rgba( $yellow, .2 );
+      -webkit-text-stroke: 1px rgba( $yellow, .2 );
+    }
+  }
+  .slides>section.orange, .orange {
+    @include accentize( $orange );
+    h1,h2,h3,h4,h5,h6,a,a:active,a:visited,code.url {
+      color: $orange;
+      text-shadow: 0 0 1px rgba( $orange, .2 );
+      -webkit-text-stroke: 1px rgba( $orange, .2 );
+    }
+  }
+  .slides>section.red, .red {
+    @include accentize( $red );
+    h1,h2,h3,h4,h5,h6,a,a:active,a:visited,code.url {
+      color: $red;
+      text-shadow: 0 0 1px rgba( $red, .2 );
+      -webkit-text-stroke: 1px rgba( $red, .2 );
+    }
+  }
+  .slides>section.magenta, .magenta {
+    @include accentize( $magenta );
+    h1,h2,h3,h4,h5,h6,a,a:active,a:visited,code.url {
+      color: $magenta;
+      text-shadow: 0 0 1px rgba( $magenta, .2 );
+      -webkit-text-stroke: 1px rgba( $magenta, .2 );
+    }
+  }
+  .slides>section.violet, .violet {
+    @include accentize( $violet );
+    h1,h2,h3,h4,h5,h6,a,a:active,a:visited,code.url {
+      color: $violet;
+      text-shadow: 0 0 1px rgba( $violet, .2 );
+      -webkit-text-stroke: 1px rgba( $violet, .2 );
+    }
+  }
+  .slides>section.blue, .blue {
+    @include accentize( $blue );
+    h1,h2,h3,h4,h5,h6,a,a:active,a:visited,code.url {
+      color:$blue;
+      text-shadow: 0 0 1px rgba( $blue, .2 );
+      -webkit-text-stroke: 1px rgba( $blue, .2 );
+    }
+  }
+  .slides>section.cyan, .cyan {
+    @include accentize( $cyan );
+    h1,h2,h3,h4,h5,h6,a,a:active,a:visited,code.url {
+      color: $cyan;
+      text-shadow: 0 0 1px rgba( $cyan, .2 );
+      -webkit-text-stroke: 1px rgba( $cyan, .2 );
+    }
+  }
+  .slides>section.green, .green {
+    @include accentize( $green );
+    h1,h2,h3,h4,h5,h6,a,a:active,a:visited,code.url {
+      color: $green;
+      text-shadow: 0 0 1px rgba( $green, .2 );
+      -webkit-text-stroke: 1px rgba( $green, .2 );
+    }
+  }
+}

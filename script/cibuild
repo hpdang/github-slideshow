@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+bundle exec jekyll build --baseurl "."
+htmlproofer _site/index.html --empty-alt-ignore
