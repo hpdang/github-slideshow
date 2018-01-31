@@ -1,4 +1,4 @@
-# Caption this
+# GitHub slideshow
 
 This repository hosts a Markdown-driven slideshow. Let the bot show you around. But if you want to know more, keep reading!
 
