@@ -1,5 +1,9 @@
-# GitHub slideshow
+# Your GitHub Learning Lab Repository for Introducing GitHub
 
-This repository hosts a Markdown-driven slideshow. Let the bot show you around. But if you want to know more, keep reading!
+Welcome to **your** repository for your GitHub Learning Lab course. This repository will be used during the different activities that I will be guiding you through, oh, I haven't introduced myself...
 
-If you're using [GitHub Pages](https://help.github.com/articles/what-is-github-pages/), files inside the `_posts` folder will be rendered on the web page. They must be named with the pattern `####-##-##-description.md`. The contents of the file must contain [YAML front-matter](https://jekyllrb.com/docs/frontmatter/).
+I'm the GitHub Learning Lab bot and I'm here to guide you in your journey to learning and mastering the various topics covered in the GitHub Pages course. I will be using Issue and Pull Request comments to communicate with you. In fact I already added an issue for you to checkout.
+
+![issue tab](https://lab.github.com/public/images/issue_tab.png)
+
+I'll meet you over there, can't wait to get started!
