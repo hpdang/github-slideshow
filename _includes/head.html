@@ -1,30 +1,22 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>{% if post.title %}{{ post.title }} | {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
-<meta name="author" content="{{ site.author }}">
-<meta name="description" content="{{ site.description }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/node_modules/reveal.js/css/reveal.css">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="{{site.baseurl}}/node_modules/reveal.js/css/reset.css">
+<link rel="stylesheet" href="{{site.baseurl}}/node_modules/reveal.js/css/reveal.css">
+<link rel="stylesheet" href="{{site.baseurl}}/node_modules/reveal.js/css/theme/moon.css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="{{site.baseurl}}/node_modules/reveal.js/lib/css/monokai.css">
 
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
-<!-- jQuery -->
-<script src="{{ site.baseurl }}/assets/js/jquery-1.11.1.min.js"></script>
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-	if( window.location.search.match( /print-pdf/gi ) ) {
-		var link = document.createElement( 'link' );
-		link.rel = 'stylesheet';
-		link.type = 'text/css';
-		link.href = '{{ site.baseurl }}/reveal.js/css/print/pdf.css';
-		document.getElementsByTagName( 'head' )[0].appendChild( link );
-	}
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
-
-<!--[if lt IE 9]>
-<script src="{{ site.baseurl }}/reveal.js/lib/js/html5shiv.js"></script>
-<![endif]-->
